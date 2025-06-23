@@ -27,6 +27,28 @@ function Weather() {
     }
   };
 
+  const getFriendlyForecast = (apiValue) => {
+  const map = {
+    Clear: "Sunny ☀️",
+    Clouds: "Cloudy ☁️",
+    Rain: "Rainy 🌧️",
+    Drizzle: "Drizzly 🌦️",
+    Thunderstorm: "Stormy ⛈️",
+    Snow: "Snowy ❄️",
+    Mist: "Misty 🌫️",
+    Fog: "Foggy 🌁",
+    Haze: "Hazy 🌤️",
+    Smoke: "Smoky 🚬",
+    Dust: "Dusty 🏜️",
+    Sand: "Sandy 🌪️",
+    Ash: "Ashy 🌋",
+    Squall: "Windy 💨",
+    Tornado: "Tornado 🌪️"
+  };
+
+  return map[apiValue] || apiValue;
+};
+
   return (
     <div className="card">
       <h1>Weather Dashboard</h1>
@@ -49,7 +71,7 @@ function Weather() {
               </h2>
               <p><strong>Temperature:</strong> {weather.temp}°C</p>
               <p><strong>Humidity:</strong> {weather.humidity}%</p>
-              <p><strong>Forecast:</strong> {weather.forecast}</p>
+              <p><strong>Forecast:</strong> {getFriendlyForecast(weather.forecast)}</p>
             </>
           )}
         </div>
